@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Mobil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <?php include("navbar.php") ?>
@@ -35,28 +36,23 @@
 
             //<!--  **********************  1  **************************     -->
             if ($query) {
-                while($select = mysqli_fetch_assoc($query)){
-                    if ($select -> num_rows > 0) {
+                while ($select = mysqli_fetch_assoc($query)) {
                     ?>
-                        <tr>
-                            <th scope="row"><?= $select['id']?></th>
-                            <td><?= $select['nama_mobil']?></td>
-                            <td><?= $select['brand_mobil']?></td>
-                            <td><?= $select['warna_mobil']?></td>
-                            <td><?= $select['tipe_mobil']?></td>
-                            <td><?= $select['harga_mobil']?></td>
-                            <td><a href="form_detail_mobil.php?id=<?= $row["id"]; ?>">detail</a> |
-                        </tr>
+                    <tr>
+                        <th scope="row"><?= $select['id'] ?></th>
+                        <td><?= $select['nama_mobil'] ?></td>
+                        <td><?= $select['brand_mobil'] ?></td>
+                        <td><?= $select['warna_mobil'] ?></td>
+                        <td><?= $select['tipe_mobil'] ?></td>
+                        <td><?= $select['harga_mobil'] ?></td>
+                        <td><a href="form_detail_mobil.php?id=<?= $select["id"]; ?>">edit</a></td>
+                    </tr>
                     <?php
-                    } else {
-                        echo "<script>alert('Data Gagal Ditambahkan :(')</script>";
-                        echo "<meta http-equiv='refresh' content='1 url=list_form_create_mobil.php'>";
-                    }
-                    
                 }
-
+            } else {
+                echo "Tidak ada data dalam tabel";
             }
-            
+s                     
             //<!--  **********************  1  **************************     -->
 
             //<!--  **********************  2  **************************     -->

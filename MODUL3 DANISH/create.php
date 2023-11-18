@@ -13,26 +13,27 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 // (3) Jika sudah coba deh kalian ambil data dari form (CLUE : pakai POST)
 
     // a. Ambil data nama mobil
-    $nama = $_POST['nama_mobil'];
+    $nama_mobil = $_POST['nama_mobil'];
     // b. Ambil data brand mobil
-    $brand = $_POST['brand_mobil'];
+    $brand_mobil = $_POST['brand_mobil'];
     // c. Ambil data warna mobil
-    $warna = $_POST['warna_mobil'];
+    $warna_mobil = $_POST['warna_mobil'];
     // d. Ambil data tipe mobil
-    $tipe = $_POST['tipe_mobil'];
+    $tipe_mobil = $_POST['tipe_mobil'];
     // e. Ambil data harga mobil
-    $harga = $_POST['harga_mobil'];
+    $harga_mobil = $_POST['harga_mobil'];
     // (4) Kalau sudah, kita lanjut Query / Menambahkan data pada SQL (Disini ada perintah untuk SQL), Masukkan ke tabel showroom_mobil (include setiap nama column)
-    $query = mysqli_query($conn, "INSERT INTO showroom_mobil(nama_mobil, brand_mobil, warna_mobil, tipe_mobil, harga_mobil) VALUES('$nama', '$brand', '$warna', '$tipe', '$harga')");
+    $query = mysqli_query($conn, "INSERT INTO showroom_mobil(nama_mobil, brand_mobil, warna_mobil, tipe_mobil, harga_mobil) VALUES('$nama_mobil', '$brand_mobil', '$warna_mobil', '$tipe_mobil', '$harga_mobil')");
 
     // (5) Buatkan kondisi jika eksekusi query berhasil
     if($query) {
-        echo "<script>alert('Data Berhasil Ditambahkan!')</script>";
-        echo "<meta http-equiv='refresh' content='1 url=list_mobil.php'>";
+        echo "<script>
+                alert('Data Berhasil Ditambahkan!');
+                window.location.href='home.php';
+              </script>";
     // (6) Jika terdapat kesalahan, buatkan eksekusi query gagalnya 
     } else {
-        echo "<script>alert('Data Gagal Ditambahkan :(')</script>";
-        echo "<meta http-equiv='refresh' content='1 url=list_form_create_mobil.php'>";
+        echo "Error: " . mysqli_error($conn);
     }
 };
 // (7) Tutup koneksi ke database setelah selesai menggunakan database
