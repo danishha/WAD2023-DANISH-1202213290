@@ -45,23 +45,18 @@
                         <td><?= $select['warna_mobil'] ?></td>
                         <td><?= $select['tipe_mobil'] ?></td>
                         <td><?= $select['harga_mobil'] ?></td>
-                        <td><a href="form_detail_mobil.php?id=<?= $select["id"]; ?>">edit</a></td>
+                        <td><a href="form_detail_mobil.php?id=<?= $select["id"]; ?>"><button class='btn btn-primary'>Detail</button></a></td>
                     </tr>
                     <?php
                 }
-            } else {
-                echo "Tidak ada data dalam tabel";
-            }
-s                     
+            }                  
             //<!--  **********************  1  **************************     -->
-
+            
             //<!--  **********************  2  **************************     -->
-
-            
-            
-
-            
-            
+            else {
+                echo "Tidak ada data dalam tabel";
+            }  
+        
             //<!--  **********************  2  **************************     -->
             ?>
         </div>

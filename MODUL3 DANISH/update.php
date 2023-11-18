@@ -15,18 +15,19 @@ $id = $_GET['id'];
         $warna_mobil = $data['warna_mobil'];
         $tipe_mobil = $data['tipe_mobil'];
         $harga_mobil = $data['harga_mobil'];
+
         // Buatkan perintah SQL UPDATE untuk mengubah data di tabel, berdasarkan id mobil
         $query = "UPDATE showroom_mobil SET
         nama_mobil = '$nama_mobil',
         brand_mobil = '$brand_mobil',
         warna_mobil = '$warna_mobil',
         tipe_mobil = '$tipe_mobil',
-        harga_mobil = $harga_mobil
+        harga_mobil = '$harga_mobil'
         WHERE id = '$id'";
         // Eksekusi perintah SQL
         mysqli_query($conn,$query);
         // Buatkan kondisi jika eksekusi query berhasil
-        if(mysqli_affected_rows($conn,$query)) {
+        if(mysqli_affected_rows($conn) > 0) {
             echo "<script>
                 alert('data berhasil diedit!')
                 document.location.href = 'list_mobil.php'
@@ -41,7 +42,16 @@ $id = $_GET['id'];
         }
     }
     // Panggil fungsi update dengan data yang sesuai
-    update();
+    $data = [
+        'id' => $id,
+        'nama_mobil' => $_POST['nama_mobil'],
+        'brand_mobil' => $_POST['brand_mobil'],
+        'warna_mobil' => $_POST['warna_mobil'],
+        'tipe_mobil' => $_POST['tipe_mobil'],
+        'harga_mobil' => $_POST['harga_mobil']
+    ];
+
+    update($conn, $data);
     
 // Tutup koneksi ke database setelah selesai menggunakan database
 

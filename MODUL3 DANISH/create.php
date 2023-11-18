@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     if($query) {
         echo "<script>
                 alert('Data Berhasil Ditambahkan!');
-                window.location.href='home.php';
+                window.location.href='list_mobil.php';
               </script>";
     // (6) Jika terdapat kesalahan, buatkan eksekusi query gagalnya 
     } else {
